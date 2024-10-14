@@ -2,9 +2,11 @@ name: Node.js CI
 
 on:
   push:
-    branches: *
+    branches:
+      - main
   pull_request:
-    branches: *
+    branches:
+      - main
 
 jobs:
   build:
@@ -27,4 +29,4 @@ jobs:
       - name: Run Tests
         run: npm test
         env:
-          SECRET_MESSAGE: ${{ secrets.SECRET_MESSAGE }} # Pass the secret to the tests
+          SECRET_MESSAGE: ${{ secrets.SECRET_MESSAGE }}
