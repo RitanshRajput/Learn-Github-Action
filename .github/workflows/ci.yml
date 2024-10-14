@@ -1,0 +1,25 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: "14" #You can specify any version you want
+    - run: npm install
+    - name: Set environment variables
+      run: |
+        echo "SECRET_MESSAGE=${{ secrets.SECRET_MESSAGE }}" >> $GITHUB_ENV
+    - run: npm test
+      env:
+        SECRET_MESSAGE: ${{ secrets.SECRET_MESSAGE }} # pass the secret to the test
