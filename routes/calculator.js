@@ -1,15 +1,21 @@
 const express = require("express");
 const router = express.Router();
 
-router.post("/add", (req, res) => {
+router.post("/addition", (req, res) => {
   const { a, b } = req.body;
   const result = a + b;
   res.json({ result });
 });
 
-router.post("/sub", (req, res) => {
+router.post("/substract", (req, res) => {
   const { a, b } = req.body;
   const result = a - b;
+  res.json({ result });
+});
+
+router.post("/multiply", (req, res) => {
+  const { a, b } = req.body;
+  const result = a * b;
   res.json({ result });
 });
 
