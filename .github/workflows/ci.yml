@@ -2,9 +2,11 @@ name: Node.js CI
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
@@ -26,3 +28,5 @@ jobs:
 
       - name: Run Tests
         run: npm test
+        env:
+          SECRET_MESSAGE: ${{ secrets.SECRET_MESSAGE }}
