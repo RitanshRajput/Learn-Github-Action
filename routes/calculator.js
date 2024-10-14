@@ -7,11 +7,11 @@ router.post("/addition", (req, res) => {
   res.json({ result });
 });
 
-router.post("/substract", (req, res) => {
-  const { a, b } = req.body;
-  const result = a - b;
-  res.json({ result });
-});
+// router.post("/substract", (req, res) => {
+//   const { a, b } = req.body;
+//   const result = a - b;
+//   res.json({ result });
+// });
 
 router.post("/multiply", (req, res) => {
   const { a, b } = req.body;
