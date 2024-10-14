@@ -11,31 +11,31 @@ app.use("/api", secretRoutes);
 // Test for calculator routes
 describe("Calculator API", () => {
   it("should add two numbers", async () => {
-    const res = await request(app).post("/api/calculator/addition").send({ a: 2, b: 3 });
+    const res = await request(app).post("/api/calculator/addition").send({ a: 3, b: 3 });
     expect(res.statusCode).toEqual(200);
-    expect(res.body.result).toEqual(5);
+    expect(res.body.result).toEqual(6);
   });
 
   it("should subtract two numbers", async () => {
-    const res = await request(app).post("/api/calculator/substract").send({ a: 5, b: 3 });
+    const res = await request(app).post("/api/calculator/substract").send({ a: 6, b: 3 });
     expect(res.statusCode).toEqual(200);
-    expect(res.body.result).toEqual(2);
+    expect(res.body.result).toEqual(3);
   });
 
   it("should multiply two number", async () => {
-    const res = await request(app).post("/api/calculator/multiply").send({ a: 6, b: 3 });
+    const res = await request(app).post("/api/calculator/multiply").send({ a: 6, b: 1 });
     expect(res.statusCode).toEqual(200);
-    expect(res.body.result).toEqual(18);
+    expect(res.body.result).toEqual(6);
   });
 
   it("should divide two numbers", async () => {
-    const res = await request(app).post("/api/calculator/divide").send({ a: 6, b: 3 });
+    const res = await request(app).post("/api/calculator/divide").send({ a: 9, b: 3 });
     expect(res.statusCode).toEqual(200);
-    expect(res.body.result).toEqual(2);
+    expect(res.body.result).toEqual(3);
   });
 
   it("should return error for division by zero", async () => {
-    const res = await request(app).post("/api/calculator/divide").send({ a: 6, b: 0 });
+    const res = await request(app).post("/api/calculator/divide").send({ a: 5, b: 0 });
     expect(res.statusCode).toEqual(400);
     expect(res.body.error).toEqual("Division by zero is not allowed");
   });
