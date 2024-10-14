@@ -10,22 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14, 16, 18] # Test on multiple Node.js versions
-
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+          node-version: "19"
+
+      - name: Install Dependencies
+        run: npm install
 
       - name: Set environment variables
-        run: |
-          echo "SECRET_MESSAGE=${{ secrets.SECRET_MESSAGE }}" >> $GITHUB_ENV
+        run: echo "SECRET_MESSAGE=${{ secrets.SECRET_MESSAGE }}" >> $GITHUB_ENV
 
-      - run: npm test
-        env:
-          SECRET_MESSAGE: ${{ secrets.SECRET_MESSAGE }} # pass the secret to the test
+      - name: Run Tests
+        run: npm test
